@@ -8,9 +8,9 @@ pFacesCli is a orion plugin tool that allows communication with pFaces.<br/>
 Commands:<br/>
 pFacesCli login<br/>
 pFacesCli check `<hwc>`<br/>
-pFacesCli upload `<project>``<hwc>`<br/>
-pFacesCli compile `<project>``<hwc>`<br/>
-pFacesCli run `<project>``<hwc>` `<device-list>`<br/>
+pFacesCli upload `<project>` `<hwc>`<br/>
+pFacesCli compile `<project>` `<hwc>`<br/>
+pFacesCli run `<project>` `<hwc>` `<device-list>`<br/>
 pFacesCli list-HWCs<br/>
 pFacesCli list-Jobs`<hwc>`<br/>
 pFacesCli status`<hwc>` `<job>`<br/>
