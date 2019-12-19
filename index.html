@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Shell Plugin</title>
+<script type="text/javascript" src="js/jso.js"></script>
+<script src="js/plugin.js"></script>
+<script src="js/Deferred.js"></script>
+<script src="js/messages.js"></script>
+<script src="js/stringTable.js"></script>
+<script src="js/keys.js"></script>
+<script src="js/requests.js"></script>
+<script src="js/pFacesRequests.js"></script>
+<script src="js/pFacesCliUtils.js"></script>
+<script src="js/axios.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src ="node_modules/clientside-require/dist/bundle.js"></script>
+<script src="commands/pFacesListHWCs.js"></script>
+<script src="commands/mainCommand.js"></script>
+<script src="commands/zipCommand.js"></script>
+<script src="commands/loginCommand.js"></script>
+<script src="commands/helpCommand.js"></script>
+<script src="commands/updateCommand.js"></script>
+<script src="commands/compileCommand.js"></script>
+<script src="commands/runCommand.js"></script>
+<script src="commands/listDevicesCommand.js"></script>
+<script src="commands/listJobsCommand.js"></script>
+<script src="commands/uploadCommand.js"></script>
+<script src="commands/statusCommand.js"></script>
+<script src="commands/killCommand.js"></script>
+<script src="commands/pFacesVersionCommand.js"></script>
+<script src="commands/infoCommand.js"></script>
+<script src="commands/agentVersionCommand.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/github-api/dist/GitHub.bundle.min.js"></script>
+<script src="https://rawgithub.com/Stuk/jszip/v1.0.0/jszip.js"></script>
+<script src="https://rawgithub.com/Stuk/jszip/v1.0.0/jszip-load.js"></script>
+<script>
+//630e189db39d2ea7f30f8fa8c200ac72848b1a35
+          var userID="";
+          var headers = { name: "pFaces Orion Plugin", version: "1.0", description: "pFaces Orion Plugin" };
+          var provider = new orion.PluginProvider(headers);
+
+
+          //const urls=['http://10.162.253.132:8000/pFaces/REST/dictionary/pFacesAgentLoginagent_0','http://10.162.253.132:2000/dummy']
+          //const url='http://10.162.253.132:8000/pFaces/REST/dictionary/pFacesAgentLoginagent_0';//fetch it afetwards from the options orion page
+          //const adress='10.162.253.132';
+
+          //var hwcnumber=5;
+        /*
+          provider.registerService('orion.cm.metatype', {}, // no methods
+          {  classes: [
+                {  id: 'example.hwc',
+                   name: 'HWC Settings',
+                   properties: [
+                       {  id: "hwcnumber",
+                          type: "number",
+                          defaultValue: hwcnumber
+                       }
+                   ]
+                }
+            ],
+            designates: [
+                {  pid: 'example.pid',
+                   classId: 'example.hwc'
+                }
+            ]
+          });
+          var url3="";
+
+          provider.registerService("orion.core.setting",
+          {},  // no methods
+          {  settings: [
+               {  pid: "example.pid",
+                  name: "Number of HWCs",
+                  categoryLabel: "HWC",
+                  properties: [
+                      {  id: "hwcnumber",
+                         type: "number",
+                         defaultValue: hwcnumber
+                      }
+                  ]
+               }
+           ]
+           });
+           provider.registerService(["orion.cm.managedservice"],
+         {  updated: function(properties) {
+                if (properties === null) {
+                  console.log("We have no properties :(");
+                } else {
+                  console.log("We got properties!");
+                  console.dir(properties);
+                  console.log(properties);
+                  properties.name1="HI";
+                  console.log(properties);
+                }
+            }
+         },
+         {  pid: "example.pod1"
+         });
+
+
+          var hwcset=getHWC(hwcnumber);
+          //console.log(hwcnumber);
+          provider.registerService("orion.core.setting",
+            {},  // no methods
+          hwcset);
+
+    */
+
+      provider.registerService("orion.core.setting",{}, getLoginPage());
+      var urls=[];
+      provider.registerService(["orion.cm.managedservice"],
+      {  updated: function(properties) {
+          if (properties === null) {
+            console.log("We have no properties :(");
+          } else {
+            console.log("We got properties!");
+            var urlsStr=properties.hwcs;
+            urls=urlsStr.split(";");
+            userID=properties.login;
+          }
+          }
+       },
+       {  pid: "example.pod"
+       });
+
+
+     provider.registerServiceProvider("orion.shell.command", null, mainProperties);
+     provider.registerServiceProvider("orion.shell.command", zipImpl, zipProperties);
+     provider.registerServiceProvider("orion.shell.command", pFacesLoginImpl, pFacesLoginProperties);
+     provider.registerServiceProvider("orion.shell.command", helpImpl, helpProperties);
+     provider.registerServiceProvider("orion.shell.command", pFacesListHWCsImpl, pFacesListHWCsProperties);
+     provider.registerServiceProvider("orion.shell.command", updateImpl, updateProperties);
+     provider.registerServiceProvider("orion.shell.command", compileImpl, compileProperties);
+     provider.registerServiceProvider("orion.shell.command", runImpl, runProperties);
+     provider.registerServiceProvider("orion.shell.command", listDevicesImpl, listDevicesProperties);
+     provider.registerServiceProvider("orion.shell.command", listJobsImpl, listJobsProperties);
+     provider.registerServiceProvider("orion.shell.command", uploadImpl, uploadProperties);
+     provider.registerServiceProvider("orion.shell.command", statusImpl, statusProperties);
+     provider.registerServiceProvider("orion.shell.command", killImpl, killProperties);
+     provider.registerServiceProvider("orion.shell.command", pFacesVersionImpl, pFacesVersionProperties);
+     provider.registerServiceProvider("orion.shell.command", infoImpl, infoProperties);
+     provider.registerServiceProvider("orion.shell.command", agentVersionImpl, agentVersionProperties);
+
+
+
+     provider.connect();
+
+
+ </script>
+ </head>
+ </html>
