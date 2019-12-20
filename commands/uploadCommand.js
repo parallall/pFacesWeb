@@ -20,6 +20,7 @@ var uploadImpl = {
     var zip = new JSZip();
     var files = args.files;
     var projectname="";
+    console.log(context);
     if(files["0"]["path"]=="."){
        projectname=context["cwd"].substring((context["cwd"].substring(0,context["cwd"].length-1)).lastIndexOf('/')+1,context["cwd"].length-1);
     }
@@ -48,7 +49,7 @@ var uploadImpl = {
     var project=zip.generate({type:"base64"});
     var response=pfacesGetAccessResponse(userID,urls[hwc-1]);
     return   response.then(function(response){
-                    var result="";
+                    var result= new orion.Deferred();
                     console.log(response);
                     if(!isObject(response)){
                        var permission=checkPermission(response)
@@ -59,14 +60,13 @@ var uploadImpl = {
                          var optionBody=toJson(optionsKeys,optionsValues);
                          var request=userDictJson(keys["PFACES_AGENT_USER_DICT_COMMAND_REQUEST_UPLOAD"],"submitted",optionBody,d.toLocaleString(),"");
                          var uploadResponse=pfacesSetValue(request,getLoginURL(response,urls[hwc-1]));
-                         uploadResponse.then(function(res){console.log(res);
-                         result=res;
-                         return result;})
+                         uploadResponse.then(function(res){
+                         result.resolve(JSON.parse(res)[keys["PFACES_AGENT_USER_DICT_COMMAND_REQUEST_UPLOAD"]]);})
                        }}
                     else{
-                       result="Not connected to the HWC"
-                       return result;
+                       result="Not connected to the HWC";
                     }
+                    return result;
              });
 
   }

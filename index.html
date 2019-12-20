@@ -36,81 +36,16 @@
 <script src="https://rawgithub.com/Stuk/jszip/v1.0.0/jszip.js"></script>
 <script src="https://rawgithub.com/Stuk/jszip/v1.0.0/jszip-load.js"></script>
 <script>
+
+
+
           var userID="";
           var headers = { name: "pFaces Orion Plugin", version: "1.0", description: "pFaces Orion Plugin" };
           var provider = new orion.PluginProvider(headers);
-
-
-          //const urls=['http://10.162.253.132:8000/pFaces/REST/dictionary/pFacesAgentLoginagent_0','http://10.162.253.132:2000/dummy']
-          //const url='http://10.162.253.132:8000/pFaces/REST/dictionary/pFacesAgentLoginagent_0';//fetch it afetwards from the options orion page
-          //const adress='10.162.253.132';
-
-          //var hwcnumber=5;
-        /*
-          provider.registerService('orion.cm.metatype', {}, // no methods
-          {  classes: [
-                {  id: 'example.hwc',
-                   name: 'HWC Settings',
-                   properties: [
-                       {  id: "hwcnumber",
-                          type: "number",
-                          defaultValue: hwcnumber
-                       }
-                   ]
-                }
-            ],
-            designates: [
-                {  pid: 'example.pid',
-                   classId: 'example.hwc'
-                }
-            ]
-          });
-          var url3="";
-
-          provider.registerService("orion.core.setting",
-          {},  // no methods
-          {  settings: [
-               {  pid: "example.pid",
-                  name: "Number of HWCs",
-                  categoryLabel: "HWC",
-                  properties: [
-                      {  id: "hwcnumber",
-                         type: "number",
-                         defaultValue: hwcnumber
-                      }
-                  ]
-               }
-           ]
-           });
-           provider.registerService(["orion.cm.managedservice"],
+          provider.registerService("orion.core.setting",{}, getLoginPage());
+          var urls=[];
+          provider.registerService(["orion.cm.managedservice"],
          {  updated: function(properties) {
-                if (properties === null) {
-                  console.log("We have no properties :(");
-                } else {
-                  console.log("We got properties!");
-                  console.dir(properties);
-                  console.log(properties);
-                  properties.name1="HI";
-                  console.log(properties);
-                }
-            }
-         },
-         {  pid: "example.pod1"
-         });
-
-
-          var hwcset=getHWC(hwcnumber);
-          //console.log(hwcnumber);
-          provider.registerService("orion.core.setting",
-            {},  // no methods
-          hwcset);
-
-    */
-
-      provider.registerService("orion.core.setting",{}, getLoginPage());
-      var urls=[];
-      provider.registerService(["orion.cm.managedservice"],
-      {  updated: function(properties) {
           if (properties === null) {
             console.log("We have no properties :(");
           } else {

@@ -1,11 +1,11 @@
-pFaces Orion Plugin<br/>
-version: 1.0<br/>
+## pFaces Orion Plugin / version: 1.0
 pFacesCli is a orion plugin tool that allows communication with pFaces.<br/>
+## Installation
 1-Make an account in Orion Hub: https://orionhub.org<br/>
 2-Install Orion on the loclhost: https://wiki.eclipse.org/Orion/How_Tos/Install_Orion_on_Localhost<br/>
 3-How to install the plugin: https://wiki.eclipse.org/Orion/Documentation/Developer_Guide/Simple_plugin_example<br/>
 4-How to modify the plugin: https://wiki.eclipse.org/Orion/Documentation/Developer_Guide/Plugging_into_the_shell<br/>
-Commands:<br/>
+## Usage
 pFacesCli login<br/>
 pFacesCli check `<hwc>`<br/>
 pFacesCli upload `<project>` `<hwc>`<br/>
@@ -15,6 +15,7 @@ pFacesCli list-HWCs<br/>
 pFacesCli list-Jobs`<hwc>`<br/>
 pFacesCli status`<hwc>` `<job>`<br/>
 pFacesCli kill`<hwc>` `<job>`<br/>
+
 Functionality:<br/>
 login: login to all HWCs<br/>
 check: Check Hardware configuration in pFaces<br/>
