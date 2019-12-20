@@ -12,7 +12,7 @@ pFacesCli run `<project>` `<hwc>` `<device>`<br/>
 pFacesCli list-HWCs<br/>
 pFacesCli list-Jobs`<hwc>`<br/>
 ## Specify Hardware Configuration
-![Imgur Image](https://imgur.com/Oil1U3N)
+[Imgur](https://i.imgur.com/Oil1U3N.png)
 ## Functionality:<br/>
 login: login to all HWCs<br/>
 upload: Upload project to the server<br/>
