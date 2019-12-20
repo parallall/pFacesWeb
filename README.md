@@ -13,6 +13,10 @@ pFacesCli list-HWCs<br/>
 pFacesCli list-Jobs`<hwc>`<br/>
 ## Specify Hardware Configuration
 [Imgur](https://i.imgur.com/VhSPPKk.png)
+Specify:
+userID (Random for now)
+GitHub address: Not Necessary for now
+HWC address: http://10.162.253.132:8000/pFaces/REST/dictionary/pFacesAgentLoginagent_0
 ## Functionality:<br/>
 login: login to all HWCs<br/>
 upload: Upload project to the server<br/>
