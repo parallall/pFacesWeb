@@ -11,7 +11,7 @@ pFacesCli run `<project>` `<hwc>` `<device>`<br/>
 pFacesCli list-HWCs<br/>
 pFacesCli list-Jobs`<hwc>`<br/>
 ## Specify Hardware Configuration
-[Imgur](https://i.imgur.com/VhSPPKk.png)<br/>
+![pFacesWeb](https://github.com/parallall/pFacesWeb/blob/master/HWCs.png?raw=true)<br/>
 Specify:<br/>
 userID (Random for now)<br/>
 GitHub address: Not Necessary for now<br/>
