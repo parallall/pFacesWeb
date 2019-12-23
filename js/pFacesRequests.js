@@ -104,3 +104,21 @@ function checkHWCs(responses,hwcs,userID,headers,d,urls){
        };}
      return hwcs;
 }
+function getValue(response,key){
+        return response.then(function(response){
+                         var result= new orion.Deferred();;
+                         console.log(response);
+                         if(!isObject(response)){
+                            var permission=checkPermission(response)
+                            if(permission==keys["PFACES_AGENT_LOGIN_DICT_USER_PERMISSION_VALUE_granted"]){
+                              console.log(getLoginURL(response,urls[hwc-1]));
+                              var value=pfacesGetValue([key],getLoginURL(response,urls[hwc-1]));
+                              value.then(function(version){
+                                result.resolve(JSON.parse(version)[key);})
+                            }}
+                         else{
+                            result.resolve("Not connected to the HWC");
+                         }
+                         return result;
+                  });
+}
