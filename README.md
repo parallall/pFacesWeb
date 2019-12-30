@@ -1,9 +1,11 @@
 ## pFaces Orion Plugin / version: 1.0
 pFacesCli is a orion plugin tool that allows communication with pFaces.<br/>
+
 ## Installation
-1- Install Orion on the loclhost: https://wiki.eclipse.org/Orion/How_Tos/Install_Orion_on_Localhost<br/>
-2- Install the plugin: https://wiki.eclipse.org/Orion/Documentation/Developer_Guide/Simple_plugin_example<br/>
+1- Install Orion on the loclhost: https://wiki.eclipse.org/Orion/How_Tos/Install_Orion_on_Localhost<br/>. Or any online-deployed version (e.g., [OrionHub](https://orionhub.org/))
+2- Install pfacesWeb as : https://wiki.eclipse.org/Orion/Documentation/Developer_Guide/Simple_plugin_example<br/>
 3- Modify the plugin: https://wiki.eclipse.org/Orion/Documentation/Developer_Guide/Plugging_into_the_shell<br/>
+
 ## Usage
 pFacesCli login<br/>
 pFacesCli upload `<project>` `<hwc>`<br/>
