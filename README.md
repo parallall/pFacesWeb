@@ -2,7 +2,7 @@
 pFacesCli is an Exlipse-Orion plugin that allows communication with [pFacesAgent](https://github.com/parallall/pFacesAgent).<br/>
 
 ## Installation
-1- Install Orion on the loclhost: https://wiki.eclipse.org/Orion/How_Tos/Install_Orion_on_Localhost. Or any online-deployed version (e.g., [OrionHub](https://orionhub.org/)). <br/>
+1- Install Orion on the loclhost: https://wiki.eclipse.org/Orion/How_Tos/Install_Orion_on_Localhost. Or use directly any online-deployed version of Orion (e.g., [OrionHub](https://orionhub.org/)).<br/>
 2- Install pFacesWeb as a plugin in Orion. This tutorial guides you how to install any plugin in Orion: https://wiki.eclipse.org/Orion/Documentation/Developer_Guide/Simple_plugin_example<br/>
 
 ## Usage
