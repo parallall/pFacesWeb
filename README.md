@@ -3,24 +3,24 @@ pFacesCli is an Exlipse-Orion plugin that allows communication with [pFacesAgent
 
 ## Installation
 1- Install Orion on the loclhost as shown [here](https://wiki.eclipse.org/Orion/How_Tos/Install_Orion_on_Localhost), or use directly any online-deployed version of Orion (e.g., [OrionHub](https://orionhub.org/)).<br/>
-2- Launch Orion and install pFacesWeb as a plugin in Orion. This [tutorial](https://wiki.eclipse.org/Orion/Documentation/Developer_Guide/Simple_plugin_example) guides you how to install any plugin in Orion. When Installing the plugin, use the following source for the plugin:<br/>
+2- Launch Orion and install pFacesWeb as a plugin in Orion. This [tutorial](https://wiki.eclipse.org/Orion/Documentation/Developer_Guide/Simple_plugin_example) guides you how to install any plugin in Orion. When Installing the plugin, use the following source for the plugin: <https://pfaces.parallall.com/orionPlugin/index.html>.<br/>
+3- Once installed, switch to the settings tab and configure the plugin
 
-  https://pfaces.parallall.com/orionPlugin/index.html
+## pFacesWeb Plugin Configuration
+![pFacesWeb](https://github.com/parallall/pFacesWeb/blob/master/HWCs.png?raw=true)<br/>
+Specify:<br/>
+userID (Random for now)<br/>
+GitHub address: Not Necessary for now<br/>
+HWC address: a semicolon-separated link of IP-addresses or domain names pointing to HWC machines with pFaces and pFacesAgent installed <br/>
 
 ## Usage
+pFacesWeb can be used directly from the shell of Orion. Switch to the Shell tab in orion and use any of the following commands:
+
 pFacesCli login<br/>
 pFacesCli upload `<project>` `<hwc>`<br/>
 pFacesCli run `<project>` `<hwc>` `<device>`<br/>
 pFacesCli list-HWCs<br/>
 pFacesCli list-Jobs`<hwc>`<br/>
-
-
-## Specify Hardware Configuration
-![pFacesWeb](https://github.com/parallall/pFacesWeb/blob/master/HWCs.png?raw=true)<br/>
-Specify:<br/>
-userID (Random for now)<br/>
-GitHub address: Not Necessary for now<br/>
-HWC address: http://10.162.253.132:8000/pFaces/REST/dictionary/pFacesAgentLoginagent_0<br/>
 
 ## Functionality:<br/>
 login: login to all HWCs<br/>
