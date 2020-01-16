@@ -55,10 +55,10 @@ var uploadImpl = {
                        var permission=checkPermission(response)
                        if(permission==keys["PFACES_AGENT_LOGIN_DICT_USER_PERMISSION_VALUE_granted"]){
                          console.log(getLoginURL(response,urls[hwc-1]));
-                         var optionsKeys=[keys["PFACES_AGENT_USER_DICT_PROJECT_UPLOAD_PROJECT_name"],keys["PFACES_AGENT_USER_DICT_PROJECT_UPLOAD_PROJECT_blob"]]
-                         var optionsValues=[projectname,project];
+                         var optionsKeys=[keys["PFACES_AGENT_USER_DICT_PROJECT_UPLOAD_PROJECT_name"]]
+                         var optionsValues=[projectname];
                          var optionBody=toJson(optionsKeys,optionsValues);
-                         var request=userDictJson(keys["PFACES_AGENT_USER_DICT_COMMAND_REQUEST_UPLOAD"],"submitted",optionBody,d.toLocaleString(),"");
+                         var request=userDictJson(keys["PFACES_AGENT_USER_DICT_COMMAND_REQUEST_UPLOAD"],"submitted",optionBody,d.toLocaleString(),"",project);
                          var uploadResponse=pfacesSetValue(request,getLoginURL(response,urls[hwc-1]));
                          uploadResponse.then(function(res){
                          result.resolve(JSON.parse(res)[keys["PFACES_AGENT_USER_DICT_COMMAND_REQUEST_UPLOAD"]]);})
@@ -71,26 +71,3 @@ var uploadImpl = {
 
   }
 };
-/*
-var config = {
-     providerID: "GitHub",
-     client_id: "e2edd60bf92cd9820e66",
-     client_secret: "b0fd63cbc7f6dc0f1691e7d75e2b35a1cb8c229b",
-     token: "e8d4d60b177c715103bdf97dd3cb7f9bbb3590df",
-     authorization: "https://github.com/login/oauth/access_token",
-     redirect_uri: "http://localhost:8080/shell/shellPage.html#/workspace/yassineH-OrionContent" // The URL where you is redirected back, and where you perform run the callback() function.
-}
-var client = new jso.JSO(config)
-console.log(client);
-let opts = {
-      scopes: {request: ['profile']},
-      request: {prompt: "none"},
-      redirect_uri: "http://localhost:8080/shell/shellPage.html#/workspace/yassineH-OrionContent"
- }
- //client.setLoader(IFramePassive)
- //client.getToken(opts).then((token) => {console.log("I got the token: ", token)}).catch((err) => {console.error("Error from passive loader", err)})
- //var response=postRequest([],"https://github.com/login/oauth/access_token?client_id=e2edd60bf92cd9820e66&client_secret=b0fd63cbc7f6dc0f1691e7d75e2b35a1cb8c229b&code=e8d4d60b177c715103bdf97dd3cb7f9bbb3590df")
- var response=getRequest(null,"https://github.com/login/oauth/authorize?scope=user:email&client_id=e2edd60bf92cd9820e66")
- console.log(response);
- response.then(function(response){console.log(response);})
- */

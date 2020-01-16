@@ -18,13 +18,13 @@ var listDevicesImpl = {
                     var result= new orion.Deferred();
                     console.log(response);
                     if(!isObject(response)){
-                       console.log("hello");
                        var permission=checkPermission(response)
                        if(permission==keys["PFACES_AGENT_LOGIN_DICT_USER_PERMISSION_VALUE_granted"]){
                          console.log(getLoginURL(response,urls[hwc-1]));
                          var devices=pfacesGetValue([keys["PFACES_AGENT_USER_DICT_DEVICE_LIST"]],getLoginURL(response,urls[hwc-1]));
                          devices.then(function(devices){
                          devices=JSON.parse(JSON.parse(devices)[keys["PFACES_AGENT_USER_DICT_DEVICE_LIST"]]);
+                         if(devices.length>0){
                          devices.forEach(function(device){device["device_id"]=device["device_id"]+"______"});
                          var maxLength=0;
                          devices.forEach(function(device){if(maxLength<device["device_name"].length){maxLength=device["device_name"].length}});
@@ -32,10 +32,8 @@ var listDevicesImpl = {
                           for(i=0;i<(maxLength-device["device_name"].length);i++){device["device_name"]=device["device_name"]+"___"}
                           }
                          });
-                         console.log(maxLength);
                          var table=stringTable.create(devices);
-                         console.log(table);
-                         result.resolve(table)})
+                         result.resolve(table)}else{result.resolve("No Devices");}})
                        }}
                       return result;
              });

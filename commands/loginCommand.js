@@ -12,8 +12,16 @@ var pFacesLoginImpl = {
     var hwcs =HWCs(hwcsHeadres,urls,[],[],[]);
     var responses=pfacesGetAccessResponse(userID,urls);
     return   orion.Deferred.all(responses).then(function(responses){
+             var hwcsTable="HWC NAME            LOGIN STATUS\n";
              hwcs=checkResponses(responses,hwcs,userID,headers,d,urls);
-             var table=stringTable.create(hwcs);
-             return table});
+             console.log(hwcs.length);
+             for(i=0;i<hwcs.length;i++){
+               hwcsTable+="hwc"+(i+1)+"                        "+hwcs[i]["LOGIN STATUS"]+"\n";
+             }
+             console.log(typeof(hwcsTable));
+             //var table=stringTable.create(hwcs);
+             //return table
+             return hwcsTable;
+             });
 }
 };

@@ -3,9 +3,14 @@ var runProperties = {
   name: runCommand,
   description: runCommand,
   parameters: [{
-    name: "project",
+    name: "project_name",
     type: {name: "file", file: true, directory: true, exist: true, multiple: true, content: true, recurse: true},
     description: "project target"
+  },
+  {
+    name: "hwc",
+    type: "string",
+    description: "hwc target"
   },
   {
     name: "device",
@@ -13,9 +18,15 @@ var runProperties = {
     description: "device target"
   },
   {
-    name: "hwc",
+    name: "kernel_name_dir",
     type: "string",
     description: "hwc target"
+  },
+  {
+    name: "kernel_config_path",
+    type: "string",
+    description: "",
+    defaultValue: ""
   }],
   returnType: "string"
 };
@@ -26,7 +37,16 @@ var runImpl = {
     var hwcStr=args.hwc;
     var deviceName=args.device;
     var hwc=parseInt(hwcStr.charAt(hwcStr.length-1));
-    var project = args.project;
+    var project = args.project_name;
+    var kernel=args.kernel_name_dir.split("@");
+    var kernel_name="";
+    var kernel_dir=".";
+    var kernel_config_path=args.kernel_config_path;
+    if(kernel.length>1){
+        kernel_name=kernel[0];
+        kernel_dir=kernel[1];}
+        else{kernel_name=kernel[0];}
+    console.log(kernel);
     var projectname="";
     console.log(context);
     if(project["0"]["path"]=="."){
@@ -45,10 +65,11 @@ var runImpl = {
                        var permission=checkPermission(response)
                        if(permission==keys["PFACES_AGENT_LOGIN_DICT_USER_PERMISSION_VALUE_granted"]){
                          console.log(getLoginURL(response,urls[hwc-1]));
-                         var optionsKeys=[keys["PFACES_AGENT_USER_DICT_PROJECT_RUN_PROJECT_name"],keys["PFACES_AGENT_USER_DICT_PROJECT_RUN_DEVICE_id"]]
-                         var optionsValues=[projectname,deviceName];
+                         var optionsKeys=[keys["PFACES_AGENT_USER_DICT_PROJECT_RUN_PROJECT_name"],keys["PFACES_AGENT_USER_DICT_PROJECT_RUN_DEVICE_id"],keys["PFACES_AGENT_USER_DICT_PROJECT_RUN_KERNEL_name"]
+                         ,keys["PFACES_AGENT_USER_DICT_PROJECT_RUN_KERNEL_dir"],keys["PFACES_AGENT_USER_DICT_PROJECT_RUN_KERNEL_config_path"]]
+                         var optionsValues=[projectname,deviceName,kernel_name,kernel_dir,kernel_config_path];
                          var optionBody=toJson(optionsKeys,optionsValues);
-                         var request=userDictJson(keys["PFACES_AGENT_USER_DICT_COMMAND_REQUEST_RUN"],"submitted",optionBody,d.toLocaleString(),"");
+                         var request=userDictJson(keys["PFACES_AGENT_USER_DICT_COMMAND_REQUEST_RUN"],"submitted",optionBody,d.toLocaleString(),"","");
                          var runResponse=pfacesSetValue(request,getLoginURL(response,urls[hwc-1]));
                          runResponse.then(function(res){
                          console.log(res);

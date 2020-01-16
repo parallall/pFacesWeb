@@ -48,12 +48,13 @@ function getLoginURL(response,url){
           const userURL=dictURL.replace('*',address);
           return userURL;
 }
-function userDictJson(key,status,option,time,message){
+function userDictJson(key,status,option,time,message,blob){
      var js={};
      js[keys["PFACES_AGENT_USER_DICT_COMMAND_REQUEST_STATUS_JSON_KEY"]]=status;
      js[keys["PFACES_AGENT_USER_DICT_COMMAND_REQUEST_OPTION_JSON_KEY"]]=option;
      js[keys["PFACES_AGENT_USER_DICT_COMMAND_REQUEST_TIME_JSON_KEY"]]=time;
      js[keys["PFACES_AGENT_USER_DICT_COMMAND_REQUEST_MESSAGE_JSON_KEY"]]=message;
+     js[keys["PFACES_AGENT_USER_DICT_COMMAND_REQUEST_BLOB_JSON_KEY"]]=blob;
      var value=[JSON.stringify(js)];
      js=toJson([key],value);
      return js;
@@ -114,7 +115,7 @@ function getValue(response,key){
                               console.log(getLoginURL(response,urls[hwc-1]));
                               var value=pfacesGetValue([key],getLoginURL(response,urls[hwc-1]));
                               value.then(function(version){
-                                result.resolve(JSON.parse(version)[key);})
+                                result.resolve(JSON.parse(version)[key]);})
                             }}
                          else{
                             result.resolve("Not connected to the HWC");

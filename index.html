@@ -31,6 +31,8 @@
 <script src="commands/pFacesVersionCommand.js"></script>
 <script src="commands/infoCommand.js"></script>
 <script src="commands/agentVersionCommand.js"></script>
+<script src="commands/listProjectsCommand.js"></script>
+<script src="commands/jobDetailsCommand.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="https://unpkg.com/github-api/dist/GitHub.bundle.min.js"></script>
 <script src="https://rawgithub.com/Stuk/jszip/v1.0.0/jszip.js"></script>
@@ -76,6 +78,8 @@
      provider.registerServiceProvider("orion.shell.command", pFacesVersionImpl, pFacesVersionProperties);
      provider.registerServiceProvider("orion.shell.command", infoImpl, infoProperties);
      provider.registerServiceProvider("orion.shell.command", agentVersionImpl, agentVersionProperties);
+     provider.registerServiceProvider("orion.shell.command", pFacesProjectsCommandImpl, pFacesProjectsCommandProperties);
+     provider.registerServiceProvider("orion.shell.command", jobDetailsImpl, jobDetailsProperties);
 
 
 
