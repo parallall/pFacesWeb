@@ -10,27 +10,19 @@ pFacesCli is an Exlipse-Orion plugin that allows communication with [pFacesAgent
 
 userID: Use any user id you like (no spaces)<br/>
 GitHub address: Not Necessary for now<br/>
-HWC address: a semicolon-separated link of IP-addresses or domain names pointing to HWC machines with pFaces and pFacesAgent installed <br/>
+HWC address: a semicolon-separated link of IP-addresses or domain names pointing to HPC machines (a.k.a HWC) with pFaces and pFacesAgent installed <br/>
 
 ## Usage
 pFacesWeb can be used directly from the shell of Orion. Switch to the Shell tab in orion and use any of the following commands:
 
-pFacesCli login<br/>
-pFacesCli upload `<project>` `<hwc>`<br/>
-pFacesCli run `<project>` `<hwc>` `<device>`<br/>
-pFacesCli list-HWCs<br/>
-pFacesCli list-Jobs`<hwc>`<br/>
 
-## Functionality:<br/>
-login: login to all HWCs<br/>
-upload: Upload project to the server<br/>
-run: Run project with pFaces<br/>
-list-HWCs: List all hardware configurations<br/>
-list-Jobs: List all jobs<br/>
-status: Check the status of a job<br/>
-kill: Terminate a job<br/>
-
-## Commands
-`<hwc>`: Specify the target hardware configuration<br/>
-`<device>` Specify device deployed in a hwc <br/>
-`<project>`: Specify the project target in the Orion Editor <br/>
+| Command  | Usage  |
+|---|---|
+| pFacesCli login  |  request login from all configured HWCs |
+| pFacesCli list-HWCs  | lists all HWCs and the status of each one  |
+| pfacesCli list-devices `<hwc_id>` |  lists all devices in a specific HWC |
+| pFacesCli upload `<project>` `<hwc_id>`  | uploads project to specific HWC  |
+| pFacesCli run `<project>` `<hwc_id>` `<device_id>`  | runs a project already uploaded to HWC on a specific device in that HWC  |
+| pFacesCli list-Jobs `<hwc_id>`  | lists all the run-jobs in a specific HWC |
+| pFacesCli kill `<hwc_id>` `<job_id>` | kills a job running in an HWC |
+| pFacesCli job-details `<hwc_id>` `<job_id>` | shows the outut/details of a job in an HWC |
