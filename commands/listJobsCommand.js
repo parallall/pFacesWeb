@@ -24,6 +24,9 @@ var listJobsImpl = {
                          console.log(getLoginURL(response,urls[hwc-1]));
                          var jobs=pfacesGetValue([keys["PFACES_AGENT_USER_DICT_JOBS_LIST"]],getLoginURL(response,urls[hwc-1]));
                          jobs.then(function(jobs){
+                           if(jobs == "no-jobs"){
+                             result.resolve("No jobs.");
+                           }
                            var jobs_list=JSON.parse(JSON.parse(jobs)[keys["PFACES_AGENT_USER_DICT_JOBS_LIST"]]);
                            var jobsTable="JOB ID            JOB STATUS            JOB CMD\n";
                            console.log(jobs_list[0]);
@@ -32,7 +35,8 @@ var listJobsImpl = {
                              jobs_list[i][keys["PFACES_AGENT_USER_DICT_JOBS_LIST_JOB_STATUS_JSON_KEY"]]+"                    "+
                              jobs_list[i][keys["PFACES_AGENT_USER_DICT_JOBS_LIST_JOB_CMD_JSON_KEY"]]+"\n";
                            }
-                           result.resolve(jobsTable);})
+                           result.resolve(jobsTable);
+                          })
                        }}
                     else{
                        result.resolve("Not connected to the HWC");
