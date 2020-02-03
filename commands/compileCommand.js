@@ -2,11 +2,18 @@ const compileCommand="pFacesCli compile";
 var compileProperties = {
   name: compileCommand,
   description: "Compile project with pFaces",
-  parameters: [{
-    name: "project",
-    type: "string",
-    description: "Compile project with pFaces"
-  }],
+  parameters: [
+    {
+      name: "project_name",
+      type: {name: "file", file: true, directory: true, exist: true, multiple: true, content: true, recurse: true},
+      description: "project target"
+    },
+    {
+      name: "hwc",
+      type: "string",
+      description: "Hardware configuration target"
+    }
+  ],
   returnType: "string"
 };
 var compileImpl = {
@@ -33,7 +40,7 @@ var compileImpl = {
                        var permission=checkPermission(response)
                        if(permission==keys["PFACES_AGENT_LOGIN_DICT_USER_PERMISSION_VALUE_granted"]){
                          console.log(getLoginURL(response,urls[hwc-1]));
-                         var optionsKeys=[keys["PFACES_AGENT_USER_DICT_PROJECT_RUN_PROJECT_name"]];
+                         var optionsKeys=[keys["PFACES_AGENT_USER_DICT_PROJECT_COMPILE_PROJECT_name"]];
                          var optionsValues=[projectname];
                          var optionBody=toJson(optionsKeys,optionsValues);
                          var request=userDictJson(keys["PFACES_AGENT_USER_DICT_COMMAND_REQUEST_COMPILE"],"submitted",optionBody,d.toLocaleString(),"","");

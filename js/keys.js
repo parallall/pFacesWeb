@@ -28,6 +28,7 @@ var keys={//Default message bundl
 	"PFACES_AGENT_USER_DICT_COMMAND_REQUEST_UPLOAD":"cr_upload",
 	"PFACES_AGENT_USER_DICT_COMMAND_REQUEST_KILL":"cr_kill",
 	"PFACES_AGENT_USER_DICT_COMMAND_REQUEST_RUN":"cr_run",
+	"PFACES_AGENT_USER_DICT_PROJECT_COMPILE_PROJECT_name": "project_compile_project_name",
 	"PFACES_AGENT_USER_DICT_PROJECT_RUN_PROJECT_name": "project_run_project_name",
 	"PFACES_AGENT_USER_DICT_PROJECT_RUN_DEVICE_id": "project_run_device_id",
 	"PFACES_AGENT_USER_DICT_PROJECT_RUN_KERNEL_name": "project_run_kernel_name",
