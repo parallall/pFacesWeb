@@ -24,7 +24,8 @@ var listJobsImpl = {
                          console.log(getLoginURL(response,urls[hwc-1]));
                          var jobs=pfacesGetValue([keys["PFACES_AGENT_USER_DICT_JOBS_LIST"]],getLoginURL(response,urls[hwc-1]));
                          jobs.then(function(jobs){
-                           if(jobs == "no-jobs"){
+                           console.log(jobs);
+                           if(JSON.parse(jobs)[keys["PFACES_AGENT_USER_DICT_JOBS_LIST"]] == "no-jobs"){
                              result.resolve("No jobs.");
                            }
                            var jobs_list=JSON.parse(JSON.parse(jobs)[keys["PFACES_AGENT_USER_DICT_JOBS_LIST"]]);
